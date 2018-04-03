@@ -1,14 +1,20 @@
 package com.example.imtiazaminsajid.quizquiz;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.imtiazaminsajid.quizquiz.Model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class MainActivity extends AppCompatActivity {
@@ -53,6 +59,54 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.setMessage("Please fill full all information");
 
         LayoutInflater inflater = this.getLayoutInflater();
+        View sign_up_layout = inflater.inflate(R.layout.sign_up_layout, null);
+
+        edtNewUser = sign_up_layout.findViewById(R.id.edtNewUserName);
+        edtNewPassword = sign_up_layout.findViewById(R.id.edtNewPassword);
+        edtNewEmail = sign_up_layout.findViewById(R.id.edtNewEmail);
+
+        alertDialog.setView(sign_up_layout);
+        alertDialog.setIcon(R.drawable.ic_account_circle_black_24dp);
+
+        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                final User user = new User(edtNewUser.getText().toString(),
+                        edtNewEmail.getText().toString(),
+                        edtNewPassword.getText().toString());
+
+                users.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if (dataSnapshot.child(user.getUsername()).exists())
+                            Toast.makeText(MainActivity.this, "User Already Exists!", Toast.LENGTH_SHORT).show();
+
+                        else {
+                            users.child(user.getUsername()).setValue(user);
+                            Toast.makeText(MainActivity.this, "User Registration successfully!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+                dialogInterface.dismiss();
+
+
+            }
+        });
+
+        alertDialog.show();
 
     }
 }

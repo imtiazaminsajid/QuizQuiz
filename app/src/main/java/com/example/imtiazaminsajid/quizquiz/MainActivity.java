@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     private void showSignUpDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
         alertDialog.setTitle("Sign Up");
-        alertDialog.setMessage("Please fill full all information");
+        alertDialog.setMessage("Please full fill all information");
 
         LayoutInflater inflater = this.getLayoutInflater();
         View sign_up_layout = inflater.inflate(R.layout.sign_up_layout, null);
@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 final User user = new User(edtNewUser.getText().toString(),
-                        edtNewEmail.getText().toString(),
-                        edtNewPassword.getText().toString());
+                        edtNewPassword.getText().toString(),
+                        edtNewEmail.getText().toString());
 
                 users.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

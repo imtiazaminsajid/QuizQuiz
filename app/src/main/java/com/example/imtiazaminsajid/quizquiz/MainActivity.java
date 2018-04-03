@@ -51,6 +51,45 @@ public class MainActivity extends AppCompatActivity {
                 showSignUpDialog();
             }
         });
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn(edtUser.getText().toString(),
+                        edtPassword.getText().toString());
+            }
+        });
+    }
+
+    private void signIn(final String user, final String password) {
+        users.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.child(user).exists()){
+                    if (!user.isEmpty()){
+                        User login = dataSnapshot.child(user).getValue(User.class);
+                        assert login != null;
+                        if (login.getPassword().equals(password)){
+                            Toast.makeText(MainActivity.this, "Login OK !", Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(MainActivity.this, "Wrong Password!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    else {
+                        Toast.makeText(MainActivity.this, "Please Enter Your User Name!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+                else {
+                    Toast.makeText(MainActivity.this, "User is not Exist !", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void showSignUpDialog() {

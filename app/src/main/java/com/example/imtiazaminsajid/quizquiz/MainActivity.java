@@ -68,9 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 if (dataSnapshot.child(user).exists()){
                     if (!user.isEmpty()){
                         User login = dataSnapshot.child(user).getValue(User.class);
-                        assert login != null;
                         if (login.getPassword().equals(password)){
-                            Toast.makeText(MainActivity.this, "Login OK !", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Login OK!", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Toast.makeText(MainActivity.this, "Wrong Password!", Toast.LENGTH_SHORT).show();
@@ -118,8 +117,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 final User user = new User(edtNewUser.getText().toString(),
-                        edtNewPassword.getText().toString(),
-                        edtNewEmail.getText().toString());
+                        edtNewEmail.getText().toString(),
+                        edtNewPassword.getText().toString());
 
                 users.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

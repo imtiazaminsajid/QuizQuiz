@@ -2,6 +2,7 @@ package com.example.imtiazaminsajid.quizquiz;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -69,7 +70,10 @@ public class MainActivity extends AppCompatActivity {
                     if (!user.isEmpty()){
                         User login = dataSnapshot.child(user).getValue(User.class);
                         if (login.getPassword().equals(password)){
-                            Toast.makeText(MainActivity.this, "Login OK!", Toast.LENGTH_SHORT).show();
+
+                            Intent homeActivity = new Intent(MainActivity.this, Home.class);
+                            startActivity(homeActivity);
+                            finish();
                         }
                         else {
                             Toast.makeText(MainActivity.this, "Wrong Password!", Toast.LENGTH_SHORT).show();

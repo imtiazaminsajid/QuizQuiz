@@ -4,8 +4,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.imtiazaminsajid.quizquiz.CategoryFragment">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/listCategory"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:text="This is Ranking Page"
+        android:textSize="30sp"
+        android:textColor="@android:color/white"
+        />
 </FrameLayout>

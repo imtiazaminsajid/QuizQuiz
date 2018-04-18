@@ -2,6 +2,7 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="4dp"
@@ -25,7 +26,7 @@
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/colorPrimary"
             app:met_singleLineEllipsis="true"
-            />
+            tools:ignore="HardcodedText" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtNewPassword"
@@ -40,7 +41,7 @@
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/colorPrimary"
             app:met_singleLineEllipsis="true"
-            />
+            tools:ignore="HardcodedText" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/edtNewEmail"
@@ -55,7 +56,7 @@
             app:met_floatingLabel="highlight"
             app:met_primaryColor="@color/colorPrimary"
             app:met_singleLineEllipsis="true"
-            />
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

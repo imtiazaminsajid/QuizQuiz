@@ -27,6 +27,7 @@ import com.squareup.picasso.Picasso;
 public class CategoryFragment extends Fragment {
 
     View myFragment;
+
     RecyclerView listCategory;
     RecyclerView.LayoutManager layoutManager;
     FirebaseRecyclerAdapter<Category,CategoryViewHolder> adapter;
@@ -53,7 +54,7 @@ public class CategoryFragment extends Fragment {
 
         myFragment = inflater.inflate(R.layout.fragment_category, container, false);
 
-        listCategory = myFragment.findViewById(R.id.listCategory);
+        listCategory = (RecyclerView) myFragment.findViewById(R.id.listCategory);
         listCategory.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(container.getContext());
         listCategory.setLayoutManager(layoutManager);

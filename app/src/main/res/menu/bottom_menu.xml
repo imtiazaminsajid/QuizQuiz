@@ -7,7 +7,7 @@
     <item
         android:id="@+id/action_category"
         android:enabled="true"
-        android:title="Categories"
+        android:title="Category"
         android:icon="@drawable/ic_question_answer_black_24dp"
         app:showAsAction="ifRoom"
         />

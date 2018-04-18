@@ -19,24 +19,24 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        bottomNavigationView =  findViewById(R.id.navigation);
+        bottomNavigationView =  (BottomNavigationView) findViewById(R.id.navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectFragment = null;
+                Fragment selectedFragment = null;
                 switch (item.getItemId()){
                     case R.id.action_category:
-                        selectFragment = CategoryFragment.newInstance();
+                        selectedFragment = CategoryFragment.newInstance();
                         break;
 
                     case R.id.action_ranking:
-                        selectFragment = RankingFragment.newInstance();
+                        selectedFragment = RankingFragment.newInstance();
                         break;
                 }
 
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frame_layout, selectFragment);
+                transaction.replace(R.id.frame_layout, selectedFragment);
                 transaction.commit();
                 return true;
             }
